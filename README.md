@@ -1,10 +1,10 @@
 > This my nvim config,  
 > Use if you want to, and  
 > Just watch this videos before if you are a *`NOOB`*
-- [ ] [Vim as your Editor]( https://www.youtube.com/watch?v=X6AR2RMB5tE&list=PLm323Lc7iSW_wuxqmKx_xxNtJC_hJbQ7R )
-- [ ] [0 to LSP : Neovim RC From Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE&t=844s)
-- [ ] [Revamp Neovim RC](https://www.youtube.com/watch?v=ZWWxwwUsPNw&list=PLA1PbPOIrviIW6R0dZbLjYyGsRMWH4B3d)
-- [ ] [Teaching Neovim From Scratch To A Noob](https://www.youtube.com/watch?v=-ybCiHPWKNA)
+- [x] [Vim as your Editor]( https://www.youtube.com/watch?v=X6AR2RMB5tE&list=PLm323Lc7iSW_wuxqmKx_xxNtJC_hJbQ7R )
+- [x] [0 to LSP : Neovim RC From Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE&t=844s)
+- [x] [Revamp Neovim RC](https://www.youtube.com/watch?v=ZWWxwwUsPNw&list=PLA1PbPOIrviIW6R0dZbLjYyGsRMWH4B3d)
+- [x] [Teaching Neovim From Scratch To A Noob](https://www.youtube.com/watch?v=-ybCiHPWKNA)
 
 ---
 
