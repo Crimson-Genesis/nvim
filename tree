@@ -1,8 +1,0 @@
-.
-├── after
-│   └── plugin
-│       ├── colors.lua
-│       └── remaps.lua
-├── assets
-│   ├── img
-│   │   └── undo-tree.png
