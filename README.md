@@ -98,7 +98,7 @@
         └── vim_be_good.lua
 ```
 
-> Link for all the plugins github page, Plz chack them out.
+> Link for all the plugins github page, Plz check them out.
 
 * [Comment](https://github.com/numToStr/Comment.nvim)  
 * [CSV view](https://github.com/hat0uma/csvview.nvim)  
