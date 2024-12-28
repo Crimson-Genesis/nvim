@@ -52,7 +52,7 @@
 
 ![Undo Tree](assets/img/undo-tree.png)
 
-> This is how my config is structred
+> This is how my config is structured
 
 ```
 .
