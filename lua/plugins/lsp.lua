@@ -112,7 +112,16 @@ return {
                         },
                     },
                 },
-                -- rust_analyzer = {},
+                -- rust_analyzer = {
+                --     -- on_attach = on_attach,   -- Your custom on_attach function for LSP
+                --     -- capabilities = capabilities, -- Custom capabilities (if any)
+                --     settings = {
+                --         ["rust-analyzer"] = {
+                --             cargo = { allFeatures = true },
+                --             checkOnSave = { command = "clippy" },
+                --         },
+                --     },
+                -- },
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
                 -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -173,9 +182,9 @@ return {
                 "rust_analyzer",
                 "autopep8",
                 "isort",
-                "rustfmt",
                 "prettier",
                 "luaformatter",
+                "gopls",
             })
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,
