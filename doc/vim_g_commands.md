@@ -70,4 +70,3 @@ While Insert mode doesn't have direct `g` commands, you can use key sequences to
 - `:s/^/prefix/` - Insert a prefix at the beginning of each line.
 - `:norm Itext` - Insert text at the beginning of each line.
 
-Let me know if you need more details or examples for these!

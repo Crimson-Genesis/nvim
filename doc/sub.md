@@ -294,6 +294,3 @@ For complex patterns, it’s helpful to highlight matches before substitution.
 | `\d`         | Digits.                                      |
 | `\b`         | Word boundary.                               |
 
----
-
-These advanced techniques allow you to handle highly specific and complex substitution tasks. Let me know if you'd like help with a particular use case!

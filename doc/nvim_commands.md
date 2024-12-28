@@ -85,4 +85,3 @@
 - `Ctrl-w + N` - Switch to normal mode from the terminal.
 - `i` - Switch back to terminal input mode.
 
-Let me know if you need additional commands or examples for specific use cases!
