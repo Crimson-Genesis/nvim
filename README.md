@@ -124,7 +124,7 @@
 * [UndoTree](https://github.com/mbbill/undotree)  
 * [Vim-Be-Good](https://github.com/ThePrimeagen/vim-be-good)  
 
-***This is it,
-Hope anybody how chacks out my config likes it...***
+***This is it,  
+Hope you liked my config.***
 
 ***If you want to go deep in Nvim config [Nvim Docs](https://neovim.io/doc/).***
