@@ -1,5 +1,5 @@
 ![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
-![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)  
 ![GitHub Repo Stars](https://img.shields.io/github/stars/Crimson-Genesis/nvim?style=social)
 ![Repo Size](https://img.shields.io/github/repo-size/Crimson-Genesis/nvim)
 
