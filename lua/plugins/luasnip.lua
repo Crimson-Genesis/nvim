@@ -41,7 +41,6 @@ return {
         local f = ls.function_node
         local fmt = require("luasnip.extras.fmt").fmt
 
-
         ls.add_snippets("all", {
             s("curtime",
                 f(function()

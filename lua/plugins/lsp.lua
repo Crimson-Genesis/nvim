@@ -47,7 +47,7 @@ return {
                     map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
                     map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
                     map(
-                        "<leader>ws",
+                        "<leader>dws",
                         require("telescope.builtin").lsp_dynamic_workspace_symbols,
                         "[W]orkspace [S]ymbols"
                     )
