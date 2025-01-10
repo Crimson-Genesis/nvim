@@ -107,6 +107,7 @@ return {
         vim.api.nvim_set_keymap('n', 'z=', '<NOP>', { noremap = true, silent = true })
         vim.keymap.set('n', "<leader>z", builtin.spell_suggest, { noremap = true, silent = true })
         vim.keymap.set('n', "<leader>nm", ":Telescope notify<CR>", { noremap = true, silent = true })
-        vim.keymap.set('n', "<leader>fm", builtin.man_pages, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>fm", builtin.marks, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>fM", builtin.man_pages, { noremap = true, silent = true })
     end,
 }

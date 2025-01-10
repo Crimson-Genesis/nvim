@@ -13,25 +13,32 @@ return {
     {
         -- Main LSP Configuration
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
+        event = "BufReadPre",
         dependencies = {
             -- Automatically install LSPs and related tools to stdpath for Neovim
-            { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+            {
+                "williamboman/mason.nvim",
+                config = true,
+            }, -- NOTE: Must be loaded before dependants
+
             "williamboman/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
+            -- {
+            --     "SmiteshP/nvim-navbuddy",
+            --     dependencies = {
+            --         "SmiteshP/nvim-navic",
+            --         "MunifTanjim/nui.nvim",
+            --     },
+            --     opts = { lsp = { auto_attach = true } },
+            --     config = function()
+            --         require("nvim-navbuddy").setup()
+            --         vim.keymap.set("n", "<leader>sf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
+            --     end,
+            -- },
             {
-                "SmiteshP/nvim-navbuddy",
-                dependencies = {
-                    "SmiteshP/nvim-navic",
-                    "MunifTanjim/nui.nvim",
-                },
-                opts = { lsp = { auto_attach = true } },
-                config = function()
-                    require("nvim-navbuddy").setup()
-                    vim.keymap.set("n", "<leader>sf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
-                end,
+                "j-hui/fidget.nvim",
+                opts = {},
             },
-            { "j-hui/fidget.nvim",       opts = {} },
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
@@ -46,11 +53,7 @@ return {
                     map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
                     map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
                     map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-                    map(
-                        "<leader>dws",
-                        require("telescope.builtin").lsp_dynamic_workspace_symbols,
-                        "[W]orkspace [S]ymbols"
-                    )
+                    map("<leader>dws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
                     -- local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -88,16 +91,14 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-            local navbuddy = require("nvim-navbuddy")
+            -- local navbuddy = require("nvim-navbuddy")
             local servers = {
-                -- clangd = {},
-                -- gopls = {},
                 pyright = {
                     -- cmd = {...},
                     -- filetypes = { ...},
                     -- capabilities = {},
                     on_attach = function(client, bufnr)
-                        navbuddy.attach(client, bufnr)
+                        -- navbuddy.attach(client, bufnr)
                         client.server_capabilities.document_formatting = false
                         client.server_capabilities.document_range_formatting = false
                     end,
@@ -112,31 +113,12 @@ return {
                         },
                     },
                 },
-                -- rust_analyzer = {
-                --     -- on_attach = on_attach,   -- Your custom on_attach function for LSP
-                --     -- capabilities = capabilities, -- Custom capabilities (if any)
-                --     settings = {
-                --         ["rust-analyzer"] = {
-                --             cargo = { allFeatures = true },
-                --             checkOnSave = { command = "clippy" },
-                --         },
-                --     },
-                -- },
-                -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-                --
-                -- Some languages (like typescript) have entire language plugins that can be useful:
-                --    https://github.com/pmizio/typescript-tools.nvim
-                --
-                -- But for many setups, the LSP (`ts_ls`) will work just fine
-                -- ts_ls = {},
-                --
-
                 lua_ls = {
                     -- cmd = {...},
                     -- filetypes = { ...},
                     -- capabilities = {},
                     on_attach = function(client, bufnr)
-                        navbuddy.attach(client, bufnr)
+                        -- navbuddy.attach(client, bufnr)
                         client.server_capabilities.document_formatting = false
                         client.server_capabilities.document_range_formatting = false
                     end,
@@ -147,11 +129,6 @@ return {
                             },
                             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                             -- diagnostics = { disable = { 'missing-fields' } },
-                        },
-
-                        diagnostics = {
-                            hint = false, -- Disable hints
-                            info = false,
                         },
                     },
                 },
@@ -170,21 +147,17 @@ return {
             -- for you, so that they are available from within Neovim.
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
-                "stylua", -- Used to format Lua code
+                "stylua",
                 "bash-language-server",
                 "vim-language-server",
-                -- "mypy",
                 "black",
                 "lua_ls",
                 "pyright",
-                "clangd",
-                "quick_lint_js",
                 "rust_analyzer",
-                "autopep8",
-                "isort",
                 "prettier",
-                "luaformatter",
                 "gopls",
+                "clangd",
+                "clang-format",
             })
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,
@@ -212,46 +185,46 @@ return {
         end,
     },
 
-    { -- Autoformat
-        "stevearc/conform.nvim",
-        event = { "BufWritePre" },
-        cmd = { "ConformInfo" },
-        keys = {
-            {
-                "<leader>a<CR>",
-                function()
-                    require("conform").format({ async = true, lsp_format = "fallback" })
-                end,
-                mode = "",
-                desc = "[F]ormat buffer",
-            },
-        },
-        opts = {
-            notify_on_error = false,
-            format_on_save = function(bufnr)
-                -- Disable "format_on_save lsp_fallback" for languages that don't
-                -- have a well standardized coding style. You can add additional
-                -- languages here or re-enable it for the disabled ones.
-                local disable_filetypes = { c = true, cpp = true }
-                local lsp_format_opt
-                if disable_filetypes[vim.bo[bufnr].filetype] then
-                    lsp_format_opt = "never"
-                else
-                    lsp_format_opt = "fallback"
-                end
-                return {
-                    timeout_ms = 500,
-                    lsp_format = lsp_format_opt,
-                }
-            end,
-            formatters_by_ft = {
-                lua = { "luaformatter" },
-                python = { "black" },
-                rust = { "rustfmt", lsp_format = "fallback" },
-                javascript = { "prettierd", "prettier", stop_after_first = true },
-            },
-        },
-    },
+    -- { -- Autoformat
+    --     "stevearc/conform.nvim",
+    --     event = { "BufWritePre" },
+    --     cmd = { "ConformInfo" },
+    --     keys = {
+    --         {
+    --             "<leader>a<CR>",
+    --             function()
+    --                 require("conform").format({ async = true, lsp_format = "fallback" })
+    --             end,
+    --             mode = "",
+    --             desc = "[F]ormat buffer",
+    --         },
+    --     },
+    --     opts = {
+    --         notify_on_error = false,
+    --         format_on_save = function(bufnr)
+    --             -- Disable "format_on_save lsp_fallback" for languages that don't
+    --             -- have a well standardized coding style. You can add additional
+    --             -- languages here or re-enable it for the disabled ones.
+    --             local disable_filetypes = { c = true, cpp = true }
+    --             local lsp_format_opt
+    --             if disable_filetypes[vim.bo[bufnr].filetype] then
+    --                 lsp_format_opt = "never"
+    --             else
+    --                 lsp_format_opt = "fallback"
+    --             end
+    --             return {
+    --                 timeout_ms = 500,
+    --                 lsp_format = lsp_format_opt,
+    --             }
+    --         end,
+    --         formatters_by_ft = {
+    --             lua = { "luaformatter" },
+    --             python = { "black" },
+    --             rust = { "rustfmt", lsp_format = "fallback" },
+    --             javascript = { "prettierd", "prettier", stop_after_first = true },
+    --         },
+    --     },
+    -- },
 
     { -- Autocompletion
         "hrsh7th/nvim-cmp",

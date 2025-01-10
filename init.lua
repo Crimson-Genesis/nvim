@@ -4,3 +4,4 @@ require("config.keymaps")
 
 require("config.autocommands")
 require("config.alias")
+require("config.functions")
