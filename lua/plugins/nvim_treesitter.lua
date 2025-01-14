@@ -23,6 +23,7 @@ return {
             highlight = {
                 enable = true,
                 disable = { "json" },
+                additional_vim_regex_highlighting = { "htmldjango" },
             },
             indent = {
                 enable = true,
@@ -44,5 +45,6 @@ return {
                 disable = { "json" },
             },
         })
+        vim.cmd([[autocmd BufNewFile,BufRead *.html set filetype=htmldjango]])
     end,
 }

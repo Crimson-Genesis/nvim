@@ -4,3 +4,7 @@ function ColorMe()
 end
 
 ColorMe()
+vim.cmd([[
+  highlight StatusLine guibg=#000000 guifg=#D8DEE9
+]])
+

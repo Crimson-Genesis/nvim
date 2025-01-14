@@ -1,75 +1,80 @@
 return {
-    'nvimdev/lspsaga.nvim',
+    "nvimdev/lspsaga.nvim",
     dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-        'nvim-tree/nvim-web-devicons',
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        require('lspsaga').setup({
+        require("lspsaga").setup({
             ui = {
-                border = "rounded"
+                border = "rounded",
             },
             diagnostic = {
                 enable = true,
                 max_height = 0.8,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
+            },
+            lsp_progress = true,
+            progress = {
+                enable = true,
+                max_width = 0.6,
             },
             rename = {
                 enable = true,
                 keys = {
-                    quit = { '<C-c>', '<ESC>' }
-                }
+                    quit = { "<C-c>", "<ESC>" },
+                },
             },
             -- Disable all other features
             code_action = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             lightbulb = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             hover = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             finder = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             definition = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             implement = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             signature_help = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
             symbol_in_winbar = {
                 enable = false,
                 keys = {
-                    quit = { 'q', '<ESC>', "C-c>" }
-                }
+                    quit = { "q", "<ESC>", "C-c>" },
+                },
             },
         })
 

@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.wrap = false
@@ -21,7 +22,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
-vim.g.mapleader = " "
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 -- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='black' })
@@ -41,7 +41,9 @@ vim.opt.splitbelow = true
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+-- turn off the command-line and the status-line.
 vim.opt.cmdheight = 0
+-- vim.opt.laststatus = 0
 
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 --     update_in_insert = true,
