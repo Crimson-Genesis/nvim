@@ -65,17 +65,25 @@
 │   └── plugin
 │       ├── colors.lua
 │       └── remaps.lua
+├── custom_plugin
+│   └── lsp_lines
 ├── ftplugin
 │   └── json.lua
 ├── init.lua
-├── lua
+└── lua
     ├── config
+    │   ├── alias.lua
     │   ├── autocommands.lua
+    │   ├── functions.lua
     │   ├── keymaps.lua
     │   ├── lazy.lua
-    │   └── options.lua
+    │   ├── options.lua
+    │   ├── post_setup.lua
+    │   └── snippets.lua
     └── plugins
+        ├── auto-session.lua
         ├── comment.lua
+        ├── conform.lua
         ├── csv_viewer.lua
         ├── dressing.lua
         ├── flash.lua
@@ -84,8 +92,6 @@
         ├── hexeditor.lua
         ├── lsp.lua
         ├── lspsaga.lua
-        ├── lsp_signature.lua
-        ├── luasnip.lua
         ├── notify.lua
         ├── nvim_autopairs.lua
         ├── nvim_colorizer.lua
@@ -93,6 +99,7 @@
         ├── nvim_treesitter_context.lua
         ├── nvim_treesitter.lua
         ├── nvim_treesitter_textobject.lua
+        ├── nvim_ts_autotag.lua
         ├── oil.lua
         ├── render_markdown.lua
         ├── surround.lua
@@ -101,6 +108,7 @@
         ├── trouble.lua
         ├── undotree.lua
         └── vim_be_good.lua
+
 ```
 
 > Link for all the plugins github page, Plz check them out.

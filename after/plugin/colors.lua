@@ -5,6 +5,8 @@ end
 
 ColorMe()
 vim.cmd([[
-  highlight StatusLine guibg=#000000 guifg=#D8DEE9
+  highlight StatusLine guibg=#000000 guifg=#d5d6db
 ]])
-
+vim.cmd([[
+  highlight StatusLineNC ctermfg=gray ctermbg=black guifg=#888888 guibg=#000000
+]])

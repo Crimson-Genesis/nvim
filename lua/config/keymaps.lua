@@ -1,8 +1,10 @@
 local map = vim.keymap.set
+
 -- map("n", "<A-h>", "V<", { noremap = true, silent = true })
 -- map("n", "<A-l>", "V>", { noremap = true, silent = true })
 -- map("v", "<A-h>", "<", { noremap = true, silent = true })
 -- map("v", "<A-l>", ">", { noremap = true, silent = true })
+
 map("n", "<leader>ss", ":sp<CR>", { noremap = true, silent = true })
 map("n", "<leader>sv", ":vsp<CR>", { noremap = true, silent = true })
 map("n", "<leader>wc", ":close<CR>", { noremap = true, silent = true })

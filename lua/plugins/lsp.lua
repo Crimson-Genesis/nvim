@@ -91,6 +91,7 @@ return {
                 "css-lsp",
                 "jinja-lsp",
                 "emmet-language-server",
+                "htmlbeautifier",
             })
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,
