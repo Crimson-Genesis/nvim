@@ -87,7 +87,6 @@ return {
                 "clang-format",
                 "django-template-lsp",
                 "html-lsp",
-                "json-lsp",
                 "css-lsp",
                 "jinja-lsp",
                 "emmet-language-server",

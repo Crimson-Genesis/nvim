@@ -1,5 +1,5 @@
 -- Disable syntax highlighting
--- vim.cmd("syntax off")
+vim.cmd("syntax off")
 
 -- Disable auto-indentation
 vim.bo.autoindent = false
@@ -12,4 +12,4 @@ vim.bo.shiftwidth = 0
 vim.g.loaded_json = 1
 
 -- Disable LSP for JSON files
--- vim.lsp.stop_client(vim.lsp.get_active_clients())
+vim.lsp.stop_client(vim.lsp.get_active_clients())
