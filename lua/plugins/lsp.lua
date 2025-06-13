@@ -32,6 +32,15 @@ return {
                     map("<leader>dws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
                 end,
             })
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = { "json", "python", "c", "cpp", "lua", "html", "css" },
+                callback = function()
+                    vim.bo.tabstop = 4
+                    vim.bo.shiftwidth = 4
+                    vim.bo.softtabstop = 4
+                    vim.bo.expandtab = true
+                end,
+            })
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -92,6 +101,11 @@ return {
                 "emmet-language-server",
                 "htmlbeautifier",
                 "gopls",
+                "gitlab-ci-ls",
+                "actionlint",
+                "jdtls",
+                "denols",
+                "r_language_server",
             })
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,

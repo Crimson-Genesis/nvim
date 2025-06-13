@@ -36,3 +36,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- vim.o.updatetime = 500
 -- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufReadPre" }, {
+--     pattern = { "*.hl", "hypr*.conf" },
+--     callback = function(event)
+--         print(string.format("starting hyprls for %s", vim.inspect(event)))
+--         vim.lsp.start({
+--             name = "hyprlang",
+--             cmd = { "hyprls" },
+--             root_dir = vim.fn.getcwd(),
+--         })
+--     end,
+-- })
+--
+-- vim.filetype.add({
+--     pattern = { [".*/hypr/.*%.conf"] = "hyprlang" }
+-- })
