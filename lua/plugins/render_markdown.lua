@@ -4,7 +4,7 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     config = function()
         local render_markdown = require("render-markdown")
-        render_markdown.setup()
+        render_markdown.setup({latex = { enabled = false }})
         vim.keymap.set("n", "<leader>md", render_markdown.toggle, { noremap = true, silent = true })
     end
 }

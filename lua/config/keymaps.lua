@@ -1,3 +1,4 @@
+-- THE MAIN KEYMAPS
 local map = vim.keymap.set
 
 -- map("n", "<A-h>", "V<", { noremap = true, silent = true })
@@ -48,3 +49,12 @@ map("n", "<leader>qp", "<cmd>colder<CR>", { noremap = true, silent = true })
 map("", "<C-c>", "")
 map("", "<C-c>", "<Esc>", { noremap = true, silent = true })
 map("n", "<leader>sp", "vip:s/\\(\\w.*\\)/\\1")
+
+
+
+-- THE OTHER KEYMAPS
+map("n", "<leader>sk",    ":resize +5<CR>", { noremap = true, silent = true })
+map("n", "<leader>sj",  ":resize -5<CR>", { noremap = true, silent = true })
+map("n", "<leader>sh", ":vertical resize +5<CR>", { noremap = true, silent = true })
+map("n", "<leader>sl",  ":vertical resize -5<CR>", { noremap = true, silent = true })
+

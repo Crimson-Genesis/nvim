@@ -105,7 +105,8 @@ return {
                 "actionlint",
                 "jdtls",
                 "denols",
-                "r_language_server",
+                "eslint-lsp",
+                "checkmake",
             })
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,
