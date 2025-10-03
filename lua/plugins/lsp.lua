@@ -45,44 +45,9 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-            local servers = {
-                pyright = {
-                    on_attach = function(client, bufnr)
-                        client.server_capabilities.document_formatting = false
-                        client.server_capabilities.document_range_formatting = false
-                    end,
-                    settings = {
-                        python = {
-                            completion = {
-                                callSnippet = "Replace",
-                            },
-                        },
-                    },
-                },
-                lua_ls = {
-                    on_attach = function(client, bufnr)
-                        client.server_capabilities.document_formatting = false
-                        client.server_capabilities.document_range_formatting = false
-                    end,
-                    settings = {
-                        Lua = {
-                            completion = {
-                                callSnippet = "Replace",
-                            },
-                        },
-                    },
-                },
-                emmet_ls = {
-                    on_attach = function(client, bufnr)
-                        client.server_capabilities.document_formatting = false
-                        client.server_capabilities.document_range_formatting = false
-                    end,
-                },
-            }
             require("mason").setup()
             vim.keymap.set("n", "<leader>pm", ":Mason<CR>", { noremap = true, silent = true })
-            local ensure_installed = vim.tbl_keys(servers or {})
-            vim.list_extend(ensure_installed, {
+            local ensure_installed = {
                 "bash-language-server",
                 "vim-language-server",
                 "stylua",
@@ -107,7 +72,7 @@ return {
                 "denols",
                 "eslint-lsp",
                 "checkmake",
-            })
+            }
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,
                 auto_update = true,
@@ -119,16 +84,76 @@ return {
                 },
             })
             require("mason-lspconfig").setup({
-                ensure_installed = {},
                 automatic_installation = false,
                 handlers = {
                     function(server_name)
-                        local server = servers[server_name] or {}
+                        local server = {}
                         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                        require("lspconfig")[server_name].setup(server)
+                        vim.lsp.config(server_name, server)
                     end,
                 },
             })
+
+            -- Custom config starts here................................................................
+            vim.lsp.enable('asm-lsp')
+            vim.lsp.config("asm-lsp", {
+                cmd = { "asm-lsp" },
+                filetypes = { "asm", "S", "s" },
+                root_dir = require("lspconfig").util.root_pattern("*.asm", "Makefile"),
+                settings = {
+                    asm = {
+                        assembler = "nasm",
+                        instruction_se = { "x86/x86-64" },
+                    },
+                },
+            })
+
+            -- vim.lsp.config("asm_lsp", {
+            --     cmd = { "asm-lsp" },
+            --     filetypes = { "asm", "s", "S" },
+            --     -- Some LS implementations read settings via `settings`, others via init_options.
+            --     -- We provide both to be robust.
+            --     settings = {
+            --         asm = {
+            --             assembler = "nasm",
+            --             instruction_set = { "x86/x86-64" }, -- correct key name
+            --         },
+            --     },
+            -- })
+
+            vim.lsp.config("pyright", {
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.document_formatting = false
+                    client.server_capabilities.document_range_formatting = false
+                end,
+                settings = {
+                    python = {
+                        completion = {
+                            callSnippet = "Replace",
+                        },
+                    },
+                },
+            })
+            vim.lsp.config("emmet_ls", {
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.document_formatting = false
+                    client.server_capabilities.document_range_formatting = false
+                end,
+            })
+            vim.lsp.config("lua_ls", {
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.document_formatting = false
+                    client.server_capabilities.document_range_formatting = false
+                end,
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace",
+                        },
+                    },
+                },
+            })
+            -- Custom config ends here................................................................
         end,
     },
     {
