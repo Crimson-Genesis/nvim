@@ -14,4 +14,4 @@ vim.opt.relativenumber = true
 -- vim.g.loaded_json = 1
 
 -- Disable LSP for JSON files
-vim.lsp.stop_client(vim.lsp.get_active_clients())
+vim.lsp.stop_client(vim.lsp.get_clients())
