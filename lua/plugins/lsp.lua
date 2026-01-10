@@ -1,5 +1,4 @@
 return {
-
     --------------------------------------------------------------------------------
     -- Mason (install tools only)
     --------------------------------------------------------------------------------
@@ -69,7 +68,7 @@ return {
                 keyword = { range = "full" },
                 documentation = {
                     auto_show = true,
-                    -- auto_show_delay_ms = 500,
+                    auto_show_delay_ms = 100,
                 },
                 ghost_text = { enabled = true },
                 list = {
@@ -104,10 +103,10 @@ return {
                     "lsp",
                     "snippets",
                     "path",
+                    "dictionary",
                     "buffer",
                     "cmdline",
                     "omni",
-                    "dictionary",
                     "latex",
                 },
                 providers = {
@@ -115,7 +114,6 @@ return {
                         name = "lsp",
                         enabled = true,
                         module = "blink.cmp.sources.lsp",
-                        kind = "LSP",
                         score_offset = 1000,
                     },
                     thesaurus = {
@@ -150,9 +148,8 @@ return {
             },
             per_filetype = {
                 text = { "dictionary" },
-                markdown = { "thesaurus", "buffer", "snippets" },
+                markdown = { "dictionary", "buffer", "snippets" },
             },
-
             fuzzy = {
                 implementation = "lua",
             },
