@@ -21,10 +21,11 @@ return {
                     "clangd",
                     "rust-analyzer",
                     "gopls",
-                    "r-languageserver",
                     "vim-language-server",
                     "bash-language-server",
                     "ltex-ls",
+                    "html-lsp",
+                    "kotlin-lsp",
 
                     -- Formatters / tools
                     "stylua",
@@ -32,6 +33,7 @@ return {
                     "isort",
                     "prettier",
                     "clang-format",
+                    "htmlbeautifier",
                 },
                 auto_update = true,
                 run_on_start = true,
@@ -83,6 +85,21 @@ return {
                     },
                 },
             },
+            cmdline = {
+                enabled = true,
+                keymap = { preset = "inherit" },
+                completion = {
+                    list = {
+                        selection = {
+                            preselect = false,
+                            auto_insert = true,
+                        },
+                    },
+                    menu = {
+                        auto_show = true,
+                    },
+                },
+            },
             snippets = {
                 preset = "luasnip",
                 expand = function(snippet)
@@ -116,29 +133,19 @@ return {
                         module = "blink.cmp.sources.lsp",
                         score_offset = 1000,
                     },
-                    thesaurus = {
-                        name = "blink-cmp-words",
-                        module = "blink-cmp-words.thesaurus",
-                        opts = {
-                            score_offset = 20,
-                            definition_pointers = { "!", "&", "^" },
-                            similarity_pointers = { "&", "^" },
-                            similarity_depth = 2,
-                        },
-                    },
                     dictionary = {
                         name = "blink-cmp-words-dic",
                         module = "blink-cmp-words.dictionary",
                         opts = {
-                            dictionary_search_threshold = 3,
-                            score_offset = 0,
+                            dictionary_search_threshold = 4,
+                            score_offset = 50,
                             definition_pointers = { "!", "&", "^" },
                         },
                     },
                     latex = {
                         name = "Latex",
                         module = "blink-cmp-latex",
-                        score_offset = 40,
+                        score_offset = 400,
                         opts = {
                             -- set to true to insert the latex command instead of the symbol
                             insert_command = false,
